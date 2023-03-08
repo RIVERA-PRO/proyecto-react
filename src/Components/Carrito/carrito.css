@@ -1,0 +1,7 @@
+.carrito img{
+    width: 30px;
+    transition: all .40s ease;
+   
+    cursor: pointer;
+}
+

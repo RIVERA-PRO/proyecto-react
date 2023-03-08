@@ -1,0 +1,41 @@
+.static-contain{
+    padding: 2% 0%;
+    display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(200px, auto));
+    place-content: center;
+    gap: 2rem;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.static-car{
+    border: 1px solid #fcb9009e ;
+    border-radius: 4px;
+    width: 30vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding: 0px 10px;
+    text-align:left;
+}
+
+
+
+.static-car:hover{
+    background-color: #fcb90089;
+    transition: all .40s ease;
+}
+
+.static-car img{
+    width: 30px;
+    height: 40px;
+    border-radius: 100% ;
+}
+
+.static-text{
+    display: flex;
+}
+
