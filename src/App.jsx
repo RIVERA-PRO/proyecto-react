@@ -1,16 +1,11 @@
-import './App.css';
-import Header from './Pages/Header/Header'
-import Home from './Pages/Hom/Home';
+import React from "react";
+import "./App.css";
+import { router } from "./Pages/index.js";
+import { RouterProvider } from "react-router-dom";
 
-
-function App() {
+export default function App() {
   return (
-    <div className="App">
+    <RouterProvider router={router} />
 
-    <Header/>
-     <Home/>
-    </div>
   );
 }
-
-export default App;
