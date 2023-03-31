@@ -47,12 +47,27 @@
 }
 .img-detail img{
     width: 50%;
+    object-fit: scale-down;
 }
 .img-detail img:hover{
     transform: scale(1.2);
     transition: all .40s ease;
 }
 
+.details button{
+    border: none;
+    color: black;
+    background-color: #fcb900b5;
+    padding: 8px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.price{
+    color: brown;
+  font-weight: 400;
+  font-size: 20px;
+}
 @media (max-width: 700px){
     .details{
    

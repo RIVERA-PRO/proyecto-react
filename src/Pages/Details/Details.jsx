@@ -25,9 +25,12 @@ export default function Details() {
                     <img src={producto.image} alt={producto.title} />
                 </div>
                 <div className='detail-text'>
-                    <h1>{producto.title}</h1>
+                    <p>| {producto.category} | promedio {producto.rating.rate} | calificaciones {producto.rating.count}</p>
+                    <h3>{producto.title}</h3>
+                    <p className="price">Precio: ${producto.price}</p>
                     <p>{producto.description}</p>
-                    <p>Precio: ${producto.price}</p>
+                    <button> Agregar al carrito</button>
+
                 </div>
             </div>
         </div>
