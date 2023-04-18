@@ -46,12 +46,9 @@
 .detail-link{
     color: black;
     background-color: #fcb900b5;
-    padding: 5px;
-    border-radius: 6px;
-    -webkit-border-radius: 6px;
-    -moz-border-radius: 6px;
-    -ms-border-radius: 6px;
-    -o-border-radius: 6px;
+    padding: 5px 10px;
+    border-radius: 30px;
+    font-size: 13px;
 }
 
 .card-title{
@@ -98,12 +95,17 @@
 
 .categorias{
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, auto));display: flex;
+    grid-template-columns: repeat(auto-fit, minmax(200px, auto));
+    display: flex;
     gap: 2rem;
     width: 100%;
     background-color: #fcb9009f;
     padding: 8px;
     border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
 }
 .filtros{
     padding: 100px 10%;

@@ -1,5 +1,5 @@
 nav{
-    background-color: #fcb800;
+    background-color: #fcb900;
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -86,10 +86,50 @@ nav{
 }
 
 
+.navbar a{
+    color: #000;
+  }
+  
+  
+  
 
 
+.modal-nav{
+    z-index: 30000;
+    position: fixed;
+    top: 0;
+    left: 100%;
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    height: -webkit-fill-available;
+    transform: translateX(-100%);
+    transition: 0.3s ease all;
+    height: 100vh;
+    gap: 2rem;
+    align-items: center;
+    border-left: 3px solid var(--bgv-color);
+    background-color: #fff;
+    background: linear-gradient(0deg, #fff 0%, #fcb800 100%);
+}
+.cerrar-modal {
+    cursor: pointer;
+   text-align: right;
+   width: 20px;
+   font-size: 35px;
+   color: #000;
+}
+
+
+.icon-cart{
+    font-size: 25px;
+    cursor: pointer;
+}
 
 @media (max-width: 1024px) {
+    .modal-nav{
+        width: 100%;
+    }
 
     .parrafo{
         display: flex;
@@ -159,6 +199,9 @@ nav{
         flex-direction: column;
     }
 }
+
+
+
 
 @media (max-width: 700px) {
     nav{

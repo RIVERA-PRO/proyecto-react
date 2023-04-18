@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import './productos.css'
 import { Link as Anchor, useNavigate, useLocation } from "react-router-dom";
+import { initializeApp } from "firebase/app";
+import { getFirestore, collection, getDocs } from 'firebase/firestore'
 
 const url = 'https://fakestoreapi.com/products'
 
@@ -11,15 +13,33 @@ export default function Productos() {
     const [categoriaSeleccionada, setCategoriaSeleccionada] = useState('')
     const navigate = useNavigate()
 
+    const firebaseConfig = {
+        apiKey: "AIzaSyAoSXWrVlFeWqov4d2LwCJl8b4_Mr9DUxw",
+        authDomain: "react-juanrivera.firebaseapp.com",
+        projectId: "react-juanrivera",
+        storageBucket: "react-juanrivera.appspot.com",
+        messagingSenderId: "34379177595",
+        appId: "1:34379177595:web:44d9cb161beeb5af824cde"
+    };
+
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app)
+    console.log(db)
+
     useEffect(() => {
-        fetch(url)
-            .then(res => res.json())
-            .then(data => {
-                setProductos(data)
-                const todasLasCategorias = new Set(data.map(p => p.category))
-                setCategorias(Array.from(todasLasCategorias))
-            })
-    }, [])
+        const getItems = async () => {
+            const productsRef = collection(db, "products")
+            const productsSnap = await getDocs(productsRef)
+            const documents = productsSnap.docs
+            const docsData = documents.map((doc) => ({ id: doc.id, ...doc.data() })) // Agregar doc.id a los datos del producto
+            setProductos(docsData)
+            console.log("Productos:", docsData)
+            const todasLasCategorias = new Set(docsData.map(p => p.category))
+            setCategorias(Array.from(todasLasCategorias))
+        }
+        getItems()
+    }, [db])
 
     const handleDetailsClick = (id) => {
         navigate(`/details/${id}`)
@@ -33,8 +53,9 @@ export default function Productos() {
     const productosFiltrados = productos.filter(producto =>
         producto.title.toLowerCase().includes(busqueda.toLowerCase()) &&
         (categoriaSeleccionada === '' || producto.category === categoriaSeleccionada)
-
     )
+
+
 
     return (
         <div className="container">
@@ -60,20 +81,29 @@ export default function Productos() {
             </div>
             <div className="row">
 
-                {productosFiltrados.map(producto => (
-                    <div className="col-md-4 mb-3" key={producto.id}>
-                        <div className="card">
-                            <img src={producto.image} className="card-img-top" alt={producto.title} />
-                            <div className="card-body">
-                                <h5 className="card-title">{producto.title}</h5>
-                                <div className='price-link'>
-                                    <p className="card-price">${producto.price}</p>
-                                    <Anchor className='detail-link' to={`/details/${producto.id}`} onClick={() => handleDetailsClick(producto.id)}>Detalles</Anchor>
+                {productos.length === 0 ? (
+                    <p>Cargando productos...</p>
+                ) : (
+                    productosFiltrados.length > 0 ? (
+                        productosFiltrados.map(producto => (
+                            <div className="col-md-4 mb-3" key={producto.id}>
+                                <div className="card">
+                                    <img src={producto.img} className="card-img-top" alt={producto.title} />
+                                    <div className="card-body">
+                                        <h5 className="card-title">{producto.title.length > 20 ? producto.title.substring(0, 20) + "..." : producto.title}</h5>
+                                        <div className='price-link'>
+                                            <p className="card-price">${producto.price}</p>
+                                            <Anchor className='detail-link' to={`/details/${producto.id}`} onClick={() => handleDetailsClick(producto.id)}>Detalles</Anchor>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                ))}
+                        ))
+                    ) : (
+                        <p>No se encontraron productos.</p>
+                    )
+                )}
+
             </div>
         </div>
     )
