@@ -1,0 +1,61 @@
+.hom-contain{
+    padding: 2% 0%;
+    display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(500px, auto));
+    place-content: center;
+    gap: 2rem;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    padding-top: 100px;
+    
+}
+
+
+
+.banners-hom {
+    gap: 1rem;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.banners-hom img{
+    box-shadow: 0px 4px 15px rgb(0 0 0 / 8%);
+   height: 25vh;
+    width: 100%;
+    
+}
+
+.banner1{
+    width: 100%;
+}
+.banner1 img{
+    box-shadow: 0px 4px 15px rgb(0 0 0 / 8%);
+    width: 100%;
+    
+    height: 53vh;
+}
+
+
+@media (max-width: 500px) {
+
+
+    .hom-contain{
+      
+        grid-template-columns: repeat(auto-fit, minmax(250px, auto));
+        
+    }
+    .banner1 img{
+        width: 100%;
+        
+        height: 100%;
+    }
+
+    .banners-hom img{
+  
+        height: 100%;
+         width: 100%;
+         
+     }
+}
