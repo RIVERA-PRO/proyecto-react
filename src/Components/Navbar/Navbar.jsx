@@ -37,13 +37,13 @@ export default function Navbar() {
   return (
     <nav className={scrolled ? "navbar scrolled" : "navbar"}>
       <div className='logo'>
-        <img src="./img/icon/logo.png" alt="logo" />
+        <img src="https://rivera-pro.github.io/marketplace-jr-dev/img/template/logo_light.png" alt="logo" />
       </div>
 
       <div className={`nav_items ${isOpen && "open"}`} >
 
         <div className='logo-nav'>
-          <img src="./img/icon/logo.png" alt="logo" />
+          <img src="https://rivera-pro.github.io/marketplace-jr-dev/img/template/logo_light.png" alt="logo" />
 
         </div>
 
