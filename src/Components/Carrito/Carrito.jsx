@@ -76,9 +76,9 @@ export default function Carrito() {
           <p className="total-price">Total: ${calcularTotal()}</p>
           <div className="vaciar-comprar">
             <button className="vaciar" onClick={() => vaciarCarrito()}>
-              Remove
+              Vaciar
             </button>
-            <button className="comprar" onClick={() => handleBuy()}>Buy</button>
+            <button className="comprar" onClick={() => handleBuy()}>Comprar</button>
           </div>
         </div>
       ) : (
